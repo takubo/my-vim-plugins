@@ -1,7 +1,14 @@
-" Battery {{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{
+scriptencoding utf-8
+" vim: set ts=8 sw=2 sts=2 :
+
+if exists('loaded_battery')
+  finish
+endif
+let loaded_battery = v:true
 
 let UpdateBatteryInfoInterval = 10 * 1000    " 10 sec
-let g:bat_str = '? ---% [--:--:--]'
+
+let g:BatteryInfo = '? ---% [--:--:--]'
 
 " 旧タイマの削除
 if exists('TimerUbi')
@@ -64,5 +71,3 @@ EOF
   call UpdateBatteryInfo(0)
 catch
 endtry
-
-" Battery }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
