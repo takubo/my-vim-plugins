@@ -1,10 +1,13 @@
 scriptencoding utf-8
-" vim:set ts=8 sts=2 sw=2 tw=0:
+" vim: set ts=8 sts=2 sw=2 tw=0 :
 
 if exists('loaded_PrjTree')
-  "finish
+  finish
 endif
 let loaded_PrjTree = v:true
+
+let s:save_cpo = &cpo
+set cpo&vim
 
 
 " netrwは常にtree view
@@ -85,3 +88,7 @@ endfunction
 com! MyExplore call MyExplore()
 
 nnoremap <silent> <leader>t :<C-u>MyExplore<CR>
+
+
+let &cpo = s:save_cpo
+unlet s:save_cpo

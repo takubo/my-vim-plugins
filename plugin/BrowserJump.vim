@@ -1,10 +1,13 @@
 scriptencoding utf-8
-" vim:set ts=8 sts=2 sw=2 tw=0:
+" vim: set ts=8 sts=2 sw=2 tw=0 :
 
 if exists('loaded_BrowserJump')
-  "finish
+  finish
 endif
 let loaded_BrowserJump = v:true
+
+let s:save_cpo = &cpo
+set cpo&vim
 
 
 let g:BrowserJump_JumpToOrgPos = get(g:, 'BrowserJump_JumpToOrgPos', v:false)
@@ -109,3 +112,7 @@ nmap <silent> H         <Plug>(BrowserJump-Back)
 nmap <silent> L         <Plug>(BrowserJump-Foward)
 nmap <silent> <Leader>H <Plug>(BrowserJump-Disp)
 nmap <silent> <Leader>L <Plug>(BrowserJump-ToggleOrgPos)
+
+
+let &cpo = s:save_cpo
+unlet s:save_cpo

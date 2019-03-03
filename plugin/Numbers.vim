@@ -1,10 +1,13 @@
 scriptencoding utf-8
-" vim: set ts=8 sw=2 sts=2 :
+" vim: set ts=8 sts=2 sw=2 tw=0 :
 
 if exists('loaded_Numbers')
-  "finish
+  finish
 endif
 let loaded_Numbers = v:true
+
+let s:save_cpo = &cpo
+set cpo&vim
 
 
 let g:em_use_octal = v:false
@@ -231,3 +234,7 @@ command! EmTestAnaNum :echo s:ana_numstr(expand("<cword>"))
 
 "" TODO
 "	シェル版の奇数変換コマンドの全てのオプションに対応
+
+
+let &cpo = s:save_cpo
+unlet s:save_cpo

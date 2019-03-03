@@ -1,14 +1,17 @@
 scriptencoding utf-8
-" vim: set ts=8 sw=2 sts=2 :
+" vim: set ts=8 sts=2 sw=2 tw=0 :
 
 if exists('loaded_battery')
   finish
 endif
 let loaded_battery = v:true
 
+let s:save_cpo = &cpo
+set cpo&vim
+
+
 let UpdateBatteryInfoInterval = 10 * 1000    " 10 sec
 
-let g:BatteryInfo = '? ---% [--:--:--]'
 
 " 旧タイマの削除
 if exists('TimerUbi')
@@ -70,4 +73,9 @@ EOF
 
   call UpdateBatteryInfo(0)
 catch
+  let g:BatteryInfo = '? ---% [--:--:--]'
 endtry
+
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
